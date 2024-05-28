@@ -1,4 +1,3 @@
-const UserData = require('../model/User-Model')
 const joi = require('joi')
 const UserValidation = (UV) => {
     let uservalidation = joi.object({
