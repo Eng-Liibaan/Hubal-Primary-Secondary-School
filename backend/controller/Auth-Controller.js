@@ -1,6 +1,6 @@
-// const GenerateToken = require('../middleware/Generate-Token');
-// const { UserValidation, EmailValidation, PasswordValidation } = require('../middleware/Validation-Model');
-// const UserData = require('../model/User-Model')
+const GenerateToken = require('../middleware/Generate-Token');
+const { UserValidation, EmailValidation, PasswordValidation } = require('../middleware/Validation-Model');
+const UserData = require('../model/User-Model')
 // const bcrypt = require('bcrypt')
 // const SignUp = async (req, res) => {
 //     try {
@@ -43,8 +43,8 @@
 //     }
 // }
 
-// const LogOut = async (req, res) => {
-//     res.send('welcome to getclas')
-// }
+const LogOut = async (req, res) => {
+    res.send('welcome to getclas')
+}
 
-// module.exports = { SignUp, LogOut, Login }
+module.exports = { SignUp, LogOut, Login }

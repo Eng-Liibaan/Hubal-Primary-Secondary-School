@@ -20,27 +20,27 @@ const GetUser = async (req, res) => {
 
 }
 
-const UpdateUser = async (req, res) => {
-    try {
-        let { id } = req.params
-        let { Name, Email, Password, Status, Role } = req.body;
-        let salt = await bcrypt.genSalt(10)
-        let EditUser = await UserData.findByIdAndUpdate(id, {
-            Name, Email, Status, Role
-        }, { new: true })
-        if (Password) {
-            const HashPass = await bcrypt.hash(Password, salt)
-            EditUser.Password = HashPass
-        }
-        if (req.file) {
-            EditUser.Profile = req.file.filename
-        }
-        await EditUser.save()
-        res.status(200).json({ status: "Success", message: "Successfully Update User Data", EditUser })
-    } catch (error) {
-        res.send(error.message)
-    }
-}
+// const UpdateUser = async (req, res) => {
+//     try {
+//         let { id } = req.params
+//         let { Name, Email, Password, Status, Role } = req.body;
+//         let salt = await bcrypt.genSalt(10)
+//         let EditUser = await UserData.findByIdAndUpdate(id, {
+//             Name, Email, Status, Role
+//         }, { new: true })
+//         if (Password) {
+//             const HashPass = await bcrypt.hash(Password, salt)
+//             EditUser.Password = HashPass
+//         }
+//         if (req.file) {
+//             EditUser.Profile = req.file.filename
+//         }
+//         await EditUser.save()
+//         res.status(200).json({ status: "Success", message: "Successfully Update User Data", EditUser })
+//     } catch (error) {
+//         res.send(error.message)
+//     }
+// }
 
 const DeleteUser = async (req, res) => {
     try {
@@ -55,4 +55,4 @@ const DeleteUser = async (req, res) => {
     }
 }
 
-module.exports = { GetUser, GetUsers, UpdateUser, DeleteUser }
+module.exports = { GetUser, GetUsers, DeleteUser }
