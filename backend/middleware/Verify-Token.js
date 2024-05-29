@@ -1,14 +1,12 @@
-const jwt = require('jsonwebtoken')
+let jwt = require('jsonwebtoken')
 require('dotenv').config()
-
-const VerifyToken = (req, res, next) => {
-    let token = req.headers.cookie && req.headers.cookie.split("=")[1]
-    if (!token) return res.status(404).json("Cookie Not Found")
-    jwt.verify(token, process.env.token, (err, decode) => {
-        if (err) return res.status(200).json("Invalid Token")
-        req.user = decode
+exports.VerifyToken = (req, res, next) => {
+    let cookies = req.headers.cookie && req.headers.cookie.split('=')[1]
+    if (!cookies) return res.send(  "Cookie not found" )
+    jwt.verify(cookies, process.env.token, (err, data) => {
+        if (err) return res.send({ message: "Invalid token" })
+        req.AllData = data
         next()
     })
 }
 
-module.exports = VerifyToken
