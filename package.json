@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm i && npm --prefix frontend --prefix frontend ",
-    "start": "node backend/App.js"
+    "start": "node backend/App.js",
+    "build": "npm i && npm i --prefix frontend && npm run build --prefix frontend "
   },
   "keywords": [],
   "author": "",
